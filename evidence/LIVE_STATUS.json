@@ -1,0 +1,10 @@
+{
+  "mode": "llm-live",
+  "status": "not_run",
+  "reason": "OPENAI_API_KEY and OPENAI_MODEL are not configured in the development environment.",
+  "live_calls_performed": 0,
+  "live_accuracy": null,
+  "note": "Mocked integration tests and deterministic baseline evaluations are not live LLM evaluation evidence.",
+  "local_tests_passed": 31,
+  "github_publication": "Development branch endureai-llm-prototype in sbhuri/EndureAI"
+}

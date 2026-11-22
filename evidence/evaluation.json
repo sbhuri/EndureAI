@@ -1,0 +1,221 @@
+{
+  "run_at": "2026-11-21T23:04:54.910176+00:00",
+  "python": "3.14.5",
+  "mode": "deterministic-extractive",
+  "cases": [
+    {
+      "id": "winter_shortage",
+      "passed": true,
+      "expected_codes": [
+        "CAPACITY_SHORTAGE",
+        "DEMAND_MISMATCH"
+      ],
+      "actual_codes": [
+        "CAPACITY_SHORTAGE",
+        "DEMAND_MISMATCH"
+      ],
+      "expected_status": "REVISION_FOR_REVIEW",
+      "actual_status": "REVISION_FOR_REVIEW",
+      "shortage": 150,
+      "seconds": 0.070217,
+      "candidates": 4
+    },
+    {
+      "id": "insufficient_inventory",
+      "passed": true,
+      "expected_codes": [
+        "CAPACITY_SHORTAGE",
+        "DEMAND_MISMATCH"
+      ],
+      "actual_codes": [
+        "CAPACITY_SHORTAGE",
+        "DEMAND_MISMATCH"
+      ],
+      "expected_status": "REVIEW_REQUIRED",
+      "actual_status": "REVIEW_REQUIRED",
+      "shortage": 150,
+      "seconds": 0.069381,
+      "candidates": 2
+    },
+    {
+      "id": "balanced",
+      "passed": true,
+      "expected_codes": [],
+      "actual_codes": [],
+      "expected_status": "CHECKS_PASSED",
+      "actual_status": "CHECKS_PASSED",
+      "shortage": 0,
+      "seconds": 0.069239,
+      "candidates": 0
+    },
+    {
+      "id": "over_allocation",
+      "passed": true,
+      "expected_codes": [
+        "CAPACITY_SHORTAGE",
+        "OVER_CAPACITY"
+      ],
+      "actual_codes": [
+        "CAPACITY_SHORTAGE",
+        "OVER_CAPACITY"
+      ],
+      "expected_status": "REVISION_FOR_REVIEW",
+      "actual_status": "REVISION_FOR_REVIEW",
+      "shortage": 150,
+      "seconds": 0.069238,
+      "candidates": 4
+    },
+    {
+      "id": "power_gap",
+      "passed": true,
+      "expected_codes": [
+        "CAPACITY_SHORTAGE",
+        "DEMAND_MISMATCH",
+        "POWER_GAP"
+      ],
+      "actual_codes": [
+        "CAPACITY_SHORTAGE",
+        "DEMAND_MISMATCH",
+        "POWER_GAP"
+      ],
+      "expected_status": "REVIEW_REQUIRED",
+      "actual_status": "REVIEW_REQUIRED",
+      "shortage": 400,
+      "seconds": 0.075569,
+      "candidates": 2
+    },
+    {
+      "id": "access_gap",
+      "passed": true,
+      "expected_codes": [
+        "ACCESS_GAP",
+        "CAPACITY_SHORTAGE",
+        "DEMAND_MISMATCH"
+      ],
+      "actual_codes": [
+        "ACCESS_GAP",
+        "CAPACITY_SHORTAGE",
+        "DEMAND_MISMATCH"
+      ],
+      "expected_status": "REVIEW_REQUIRED",
+      "actual_status": "REVIEW_REQUIRED",
+      "shortage": 400,
+      "seconds": 0.078042,
+      "candidates": 2
+    },
+    {
+      "id": "closed_allocation",
+      "passed": true,
+      "expected_codes": [
+        "CAPACITY_SHORTAGE",
+        "CLOSED_ALLOCATION",
+        "DEMAND_MISMATCH"
+      ],
+      "actual_codes": [
+        "CAPACITY_SHORTAGE",
+        "CLOSED_ALLOCATION",
+        "DEMAND_MISMATCH"
+      ],
+      "expected_status": "REVISION_FOR_REVIEW",
+      "actual_status": "REVISION_FOR_REVIEW",
+      "shortage": 400,
+      "seconds": 0.083633,
+      "candidates": 4
+    },
+    {
+      "id": "zero_demand",
+      "passed": true,
+      "expected_codes": [],
+      "actual_codes": [],
+      "expected_status": "CHECKS_PASSED",
+      "actual_status": "CHECKS_PASSED",
+      "shortage": 0,
+      "seconds": 0.074717,
+      "candidates": 0
+    },
+    {
+      "id": "surplus_assignment",
+      "passed": true,
+      "expected_codes": [
+        "DEMAND_MISMATCH"
+      ],
+      "actual_codes": [
+        "DEMAND_MISMATCH"
+      ],
+      "expected_status": "REVISION_FOR_REVIEW",
+      "actual_status": "REVISION_FOR_REVIEW",
+      "shortage": 0,
+      "seconds": 0.097539,
+      "candidates": 2
+    },
+    {
+      "id": "power_not_required",
+      "passed": true,
+      "expected_codes": [],
+      "actual_codes": [],
+      "expected_status": "CHECKS_PASSED",
+      "actual_status": "CHECKS_PASSED",
+      "shortage": 0,
+      "seconds": 0.079511,
+      "candidates": 0
+    }
+  ],
+  "passed": 10,
+  "total": 10,
+  "finding_code_precision": 1.0,
+  "finding_code_recall": 1.0,
+  "retrieval": [
+    {
+      "query": "power generation redundant outage alternate source repairs",
+      "relevant_pages": [
+        19,
+        21
+      ],
+      "retrieved_pages": [
+        21,
+        150,
+        19,
+        82,
+        60
+      ],
+      "hit_at_5": true
+    },
+    {
+      "query": "Planning Shelter Capacity",
+      "relevant_pages": [
+        17
+      ],
+      "retrieved_pages": [
+        3,
+        17,
+        117,
+        44,
+        43
+      ],
+      "hit_at_5": true
+    },
+    {
+      "query": "facility inaccessible features accessible before use",
+      "relevant_pages": [
+        19
+      ],
+      "retrieved_pages": [
+        19,
+        79,
+        51,
+        78,
+        92
+      ],
+      "hit_at_5": true
+    }
+  ],
+  "corpus_sha256": "3028e603aa70016ca2815e881ce66890ede5f9c07a8297e4a429b1b3cf197dcc",
+  "source_hashes": {
+    "endureai/__init__.py": "e8ee3c53e3895d623989c0db8d8ac853195037dbc7dfeefe850ebd74fac50db4",
+    "endureai/cli.py": "de602f05db19d8ef7d0bee2cc22f37ec1ca392201e8ab3b0e29d7b73cea11b71",
+    "endureai/core.py": "935c5e53281ac94bd3f1b8465122eddc91871a65df6bd9a09a6db26481f2acc1",
+    "endureai/evaluate.py": "062e62fdde515cd06a6c37d11d3ad7b3ab88c4dc9c42fa27b8faa30263ba4d8d",
+    "endureai/summarizer.py": "bb45994771cac6dd4095b8ae608c4a86410be6e8939db802118c137e7a6807ef"
+  },
+  "limitations": "Authored synthetic regression cases, not independent real-world validation. No LLM, live retrieval, or operational accuracy evaluated."
+}

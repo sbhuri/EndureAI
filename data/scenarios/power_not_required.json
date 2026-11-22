@@ -1,0 +1,27 @@
+{
+  "id": "power_not_required",
+  "synthetic": true,
+  "hazard": "winter storm",
+  "demand": 250,
+  "power_required": false,
+  "shelters": [
+    {
+      "id": "A",
+      "capacity": 250,
+      "assigned": 250,
+      "open": true,
+      "available": true,
+      "backup_power": false,
+      "accessible": true
+    },
+    {
+      "id": "B",
+      "capacity": 150,
+      "assigned": 0,
+      "open": false,
+      "available": true,
+      "backup_power": true,
+      "accessible": true
+    }
+  ]
+}
