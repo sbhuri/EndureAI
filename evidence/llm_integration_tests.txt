@@ -1,0 +1,38 @@
+Run at: 2026-11-22T05:16:07.238264+00:00
+No live API calls. Agent doubles and SDK mock HTTP transport.
+test_citations_are_real_pages (test_endureai.Tests.test_citations_are_real_pages) ... ok
+test_duplicate_ids (test_endureai.Tests.test_duplicate_ids) ... ok
+test_exhaustive_small_capacity_grid (test_endureai.Tests.test_exhaustive_small_capacity_grid) ... ok
+test_fabricated_capacity_rejected (test_endureai.Tests.test_fabricated_capacity_rejected) ... ok
+test_injection_in_hazard_is_inert (test_endureai.Tests.test_injection_in_hazard_is_inert) ... ok
+test_invalid_inputs (test_endureai.Tests.test_invalid_inputs) ... ok
+test_missing_boolean (test_endureai.Tests.test_missing_boolean) ... ok
+test_missing_evidence (test_endureai.Tests.test_missing_evidence) ... ok
+test_no_mutation (test_endureai.Tests.test_no_mutation) ... ok
+test_retrieval_known_pages (test_endureai.Tests.test_retrieval_known_pages) ... ok
+test_scenarios (test_endureai.Tests.test_scenarios) ... ok
+test_search_bound (test_endureai.Tests.test_search_bound) ... ok
+test_tampered_planner_rejected (test_endureai.Tests.test_tampered_planner_rejected) ... ok
+test_unavailable_not_invented (test_endureai.Tests.test_unavailable_not_invented) ... ok
+test_unknown_query_abstains (test_endureai.Tests.test_unknown_query_abstains) ... ok
+test_credentials_not_in_error_log (test_llm.Tests.test_credentials_not_in_error_log) ... ok
+test_fabricated_citation_blocks_workflow (test_llm.Tests.test_fabricated_citation_blocks_workflow) ... ok
+test_failure_is_recorded_without_fallback (test_llm.Tests.test_failure_is_recorded_without_fallback) ... ok
+test_full_four_agent_flow (test_llm.Tests.test_full_four_agent_flow) ... ok
+test_incomplete_api_response (test_llm.Tests.test_incomplete_api_response) ... ok
+test_llm_approval_cannot_override_constraints (test_llm.Tests.test_llm_approval_cannot_override_constraints) ... ok
+test_negative_assignment (test_llm.Tests.test_negative_assignment) ... ok
+test_no_mutation (test_llm.Tests.test_no_mutation) ... ok
+test_real_sdk_request_with_mock_http_transport (test_llm.Tests.test_real_sdk_request_with_mock_http_transport) ... ok
+test_refusal (test_llm.Tests.test_refusal) ... ok
+test_response_adapter (test_llm.Tests.test_response_adapter) ... ok
+test_revision_loop (test_llm.Tests.test_revision_loop) ... ok
+test_round_bound (test_llm.Tests.test_round_bound) ... ok
+test_strict_schema (test_llm.Tests.test_strict_schema) ... ok
+test_unknown_citation (test_llm.Tests.test_unknown_citation) ... ok
+test_unknown_shelter (test_llm.Tests.test_unknown_shelter) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 2.139s
+
+OK

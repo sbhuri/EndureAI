@@ -1,0 +1,27 @@
+{
+  "id": "insufficient_inventory",
+  "synthetic": true,
+  "hazard": "winter storm",
+  "demand": 400,
+  "power_required": true,
+  "shelters": [
+    {
+      "id": "A",
+      "capacity": 250,
+      "assigned": 250,
+      "open": true,
+      "available": true,
+      "backup_power": true,
+      "accessible": true
+    },
+    {
+      "id": "B",
+      "capacity": 150,
+      "assigned": 0,
+      "open": false,
+      "available": false,
+      "backup_power": true,
+      "accessible": true
+    }
+  ]
+}
