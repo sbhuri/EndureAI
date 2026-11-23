@@ -96,7 +96,23 @@ class ResearchAgent:
             {'scenario':scenario,'pages':pages},RESEARCH)
         check_schema(result,RESEARCH)
         if not result['findings']:raise ModelFailure('Research returned no supported findings')
-        verify_claims(result['findings'],pages)
+        try:
+            verify_claims(result['findings'],pages)
+        except ModelFailure as first_error:
+            # A generated quote is not evidence. Retry once with an explicit
+            # extractive instruction; never relax citation verification.
+            result=self.backend.ask('Research',
+                'The previous response failed citation verification. Correct it using ONLY exact '
+                'contiguous quotations copied from the supplied page text, preserving punctuation '
+                'and capitalization. Cite only page IDs present in pages. Do not invent citations. '
+                'If no supported finding can be made, return an empty findings list and explain '
+                'the limitation. Do not treat a table of contents as substantive guidance.',
+                {'scenario':scenario,'pages':pages,'previous_response':result,
+                 'validation_feedback':str(first_error)},RESEARCH)
+            check_schema(result,RESEARCH)
+            if not result['findings']:
+                raise ModelFailure('Research could not produce a supported finding after citation correction')
+            verify_claims(result['findings'],pages)
         return result,pages
 
 class PlanningAgent:
