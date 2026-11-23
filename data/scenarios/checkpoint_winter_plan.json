@@ -1,0 +1,12 @@
+{
+  "id": "checkpoint_winter_plan",
+  "synthetic": true,
+  "hazard": "winter storm",
+  "demand": 400,
+  "power_required": true,
+  "shelters": [
+    {"id": "A", "capacity": 200, "assigned": 200, "open": true, "available": true, "backup_power": true, "accessible": true},
+    {"id": "B", "capacity": 150, "assigned": 125, "open": true, "available": true, "backup_power": true, "accessible": true},
+    {"id": "C", "capacity": 100, "assigned": 75, "open": true, "available": true, "backup_power": true, "accessible": true}
+  ]
+}

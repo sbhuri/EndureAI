@@ -12,7 +12,7 @@ QUERIES = {'power': 'power generation redundant outage alternate source repairs'
            'access': 'accessible shelter facility barriers accessibility',
            'capacity': 'planning shelter capacity space needs population'}
 
-def validate(s):
+def validate(s, *, allow_unavailable_open=False):
     if not isinstance(s, dict) or s.get('synthetic') is not True:
         raise ValueError('Only explicitly synthetic scenarios are accepted.')
     for key in ('id', 'hazard'):
@@ -30,7 +30,7 @@ def validate(s):
         if not all(number(x.get(k)) for k in ('capacity','assigned')): raise ValueError('Invalid shelter counts')
         for k in ('open','available','backup_power','accessible'):
             if type(x.get(k)) is not bool: raise ValueError(f'Missing boolean {k}')
-        if x['open'] and not x['available']: raise ValueError('Open shelter cannot be unavailable')
+        if x['open'] and not x['available'] and not allow_unavailable_open: raise ValueError('Open shelter cannot be unavailable')
     return copy.deepcopy(s)
 
 class ResearchAgent:
@@ -60,7 +60,7 @@ class ResearchAgent:
 
 class AuditorAgent:
     """Recompute constraints independently; never trust planner's totals."""
-    def run(self,s,evidence,baseline=None):
+    def run(self,s,evidence,baseline=None, *, require_topic_evidence=True):
         findings=[]
         def add(code,detail,topic=None):
             findings.append({'code':code,'detail':detail,'basis':'synthetic constraint' if topic is None else 'prototype rule informed by FEMA guidance',
@@ -73,6 +73,7 @@ class AuditorAgent:
         usable=0
         for x in s['shelters']:
             if x['open'] and x['available'] and x['accessible'] and (not s['power_required'] or x['backup_power']): usable+=x['capacity']
+            if x['open'] and not x['available']: add('UNAVAILABLE_OPEN',x['id'])
             if x['assigned'] and not x['open']: add('CLOSED_ALLOCATION',x['id'])
             if x['assigned']>x['capacity']: add('OVER_CAPACITY',x['id'])
             if x['open'] and not x['accessible']: add('ACCESS_GAP',x['id'],'access')
@@ -81,7 +82,7 @@ class AuditorAgent:
         if shortage: add('CAPACITY_SHORTAGE',f'{shortage} spaces short')
         assigned=sum(x['assigned'] for x in s['shelters'])
         if assigned!=s['demand']: add('DEMAND_MISMATCH',f'{assigned} assigned versus {s["demand"]} demand')
-        for topic in QUERIES:
+        for topic in QUERIES if require_topic_evidence else ():
             if not evidence.get(topic): add('EVIDENCE_MISSING',topic)
         return {'findings':findings,'usable_capacity':usable,'shortage':shortage,'passes':not findings}
 
