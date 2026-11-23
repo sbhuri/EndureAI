@@ -14,7 +14,7 @@ def main():
         scenario=json.loads(a.scenario.read_text())
         if a.mode=='llm':
             from .llm import OpenAIBackend,CoordinatorAgent,render_report
-            backend=OpenAIBackend(model=a.model,max_calls=1+a.max_rounds*5)
+            backend=OpenAIBackend(model=a.model,max_calls=2+a.max_rounds*5)
             r=CoordinatorAgent(backend,max_rounds=a.max_rounds).run(scenario)
         else:
             from .core import CoordinatorAgent,render_report
