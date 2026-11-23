@@ -101,7 +101,8 @@ class ResearchAgent:
             'Each finding needs an exact quotation from a supplied passage. Consider each source date. '
             'Do not treat a table of contents as substantive guidance. ' +
             ('Mark evidence_status as insufficient if the guidance does not apply, or conflicting if sources disagree '
-             'on a material finding. State why in limitations. Only mark it sufficient when findings are supported.'
+             'on a material finding. State why in limitations. Only mark it sufficient when findings are supported. '
+             'Put public-guidance claims only in findings, each with cited evidence.'
              if graph else ''),
             {'scenario':scenario,'pages':pages},schema)
         check_schema(result,schema)
@@ -111,6 +112,7 @@ class ResearchAgent:
         try:
             verify_claims(result['findings'],pages)
         except ModelFailure as first_error:
+            initial_status = result.get('evidence_status')
             # A generated quote is not evidence. Retry once with an explicit
             # extractive instruction; never relax citation verification.
             result=self.backend.ask('Research',
@@ -122,6 +124,8 @@ class ResearchAgent:
                 {'scenario':scenario,'pages':pages,'previous_response':result,
                  'validation_feedback':str(first_error)},schema)
             check_schema(result,schema)
+            if initial_status == 'conflicting' and result.get('evidence_status') != initial_status:
+                raise ModelFailure('Citation correction cannot clear conflicting guidance')
             if not result['findings']:
                 raise ModelFailure('Research could not produce a supported finding after citation correction')
             verify_claims(result['findings'],pages)
@@ -148,7 +152,8 @@ class PlanningAgent:
             'shelters or shelters without backup power when required. Keep assignments within capacity, assign '
             'zero to closed shelters, and never assign more than demand. A partial allocation may leave demand '
             'unserved for later refinement. Use prior Auditor feedback and the observed shortage. Do not assume '
-            'that new facilities, external aid or unlisted resources exist. Explain remaining limitations.',
+            'that new facilities, external aid or unlisted resources exist. Explain remaining limitations '
+            'using synthetic scenario data. Do not state public policy or operational instructions.',
             {'scenario':scenario,'parent':parent,'research':research,'feedback':feedback,'depth':depth},PLAN)
         check_schema(result,PLAN)
         if len(result['alternatives'])>3:raise ModelFailure('More than three alternatives')
@@ -187,6 +192,7 @@ class AuditorAgent:
             'Flag insufficient or materially conflicting evidence in evidence_status and concerns. Distinguish '
             'FEMA guidance from synthetic scenario rules. Rate guidance_alignment supported, partial or '
             'unsupported. An allocation with any unresolved deterministic finding cannot be acceptable. '
+            'Place any guidance-based claim in evidence_review with citations. '
             'A passing review is eligible only for human review of a synthetic exercise.',
             {'original':original,'candidate':candidate,'checks':checks,'research':research,'pages':pages},GRAPH_AUDIT)
         check_schema(review,GRAPH_AUDIT)
@@ -279,6 +285,17 @@ def render_report(r):
         lines += [f"- {s['id']}: {s['assigned']} assigned (open={s['open']})" for s in r["selected_plan"]["shelters"]]
     else:
         lines.append("No allocation cleared for human review.")
+    if r.get("strategy") and r["candidates"]:
+        lines += ["", "## Candidate checks"]
+        for candidate in r["candidates"]:
+            label = candidate["branch"]
+            if candidate.get("rejection"):
+                lines.append(f"- {label} rejected. {candidate['rejection']}.")
+            elif "score" in candidate:
+                points = candidate["score"]["points"]
+                shortage = candidate["checks"]["shortage"]
+                status = "passed audit" if candidate["passes"] else "unresolved"
+                lines.append(f"- {label} {status}. Score {points:g}/100, shortage {shortage} spaces.")
     if r["decisions"]:
         lines += ["", "## Coordinator decisions"] + [f"- {d['action']}: {d['explanation']}" for d in r["decisions"]]
     lines += ["", "Candidate audits, assumptions, prompts and call records are in the companion JSON."]

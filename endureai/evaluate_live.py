@@ -1,41 +1,70 @@
-"""Run real API evaluation; persist every case even if an agent fails."""
-import argparse,json,time
-from datetime import datetime,timezone
+"""Run live model evaluation and record the Checkpoint 6 measurements."""
+import argparse
+from datetime import datetime, timezone
+import json
 from pathlib import Path
+
 from .core import ROOT
-from .llm import CoordinatorAgent,OpenAIBackend,render_report
+from .evaluate_checkpoints import evaluate_workflow
+from .graph import GraphCoordinator, max_model_calls
+from .llm import OpenAIBackend, render_report
+from .metrics import audit_cases, retrieval_benchmark
+from .rag import SemanticRetriever
+
 
 def main():
-    p=argparse.ArgumentParser(description='Paid live evaluation, up to 12 model calls per scenario')
-    p.add_argument('--model');p.add_argument('--limit',type=int,default=1)
-    p.add_argument('--output',type=Path,default=ROOT/'runs'/datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ'))
-    a=p.parse_args()
-    if not 1<=a.limit<=10:p.error('limit must be 1–10')
-    cases=json.loads((ROOT/'data/evaluation_cases.json').read_text())[:a.limit]
-    try:backend=OpenAIBackend(a.model,max_calls=a.limit*12)
-    except ValueError as e:p.error(str(e))
-    a.output.mkdir(parents=True,exist_ok=False);rows=[]
-    for c in cases:
-        start=time.perf_counter();r=CoordinatorAgent(backend).run(c['scenario'])
-        name=r['scenario_id'];(a.output/f'{name}.json').write_text(json.dumps(r,indent=2))
-        (a.output/f'{name}.md').write_text(render_report(r))
-        # These labels describe deterministic policy outcomes, not independent semantic correctness.
-        expected=c['expected_status'];status_match=r['status']==expected
-        execution_ok=not r.get('error') and not any(call.get('error_type') for call in r['calls'])
-        audits=[x.get('audit',{}) for x in r['candidates']]
-        rows.append({'id':name,'expected_status':expected,'actual_status':r['status'],'status_match':status_match,
-          'execution_succeeded':execution_ok,'error':r.get('error'),'seconds':round(time.perf_counter()-start,4),
-          'calls':len(r['calls']),'rejected_candidates':sum(not x.get('passes',False) for x in audits),
-          'selected_plan_present':r['selected_plan'] is not None,
-          'input_tokens':sum((x.get('usage') or {}).get('input_tokens',0) for x in r['calls']),
-          'output_tokens':sum((x.get('usage') or {}).get('output_tokens',0) for x in r['calls'])})
-        summary={'mode':'llm-live','requested_model':backend.model,'cases':rows,
-            'completed_at':datetime.now(timezone.utc).isoformat(),'status_matches':sum(x['status_match'] for x in rows),
-            'execution_successes':sum(x['execution_succeeded'] for x in rows),'total':len(rows),
-            'semantic_review':'Not independently assessed. Quote membership is not proof of entailment.',
-            'limits':'Synthetic development fixtures; no operational validation. Status matches on failed runs are not successful evaluations.'}
-        (a.output/'evaluation.json').write_text(json.dumps(summary,indent=2))
-        print(name,r['status'],'execution_succeeded=',execution_ok,flush=True)
-    print('Evidence:',a.output)
-    if any(not row['execution_succeeded'] for row in rows):raise SystemExit(2)
-if __name__=='__main__':main()
+    maximum = max_model_calls(3)
+    parser = argparse.ArgumentParser(description=f"Paid live evaluation, up to {maximum} model calls per scenario")
+    parser.add_argument("--model")
+    parser.add_argument("--limit", type=int, default=1)
+    parser.add_argument("--output", type=Path, default=ROOT / "runs" / datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ"))
+    parser.add_argument("--support-review", type=Path, help="JSON mapping from claim ID to human-reviewed support boolean")
+    parser.add_argument("--rescore", type=Path, help="Existing live evaluation.json to rescore with --support-review, without API calls")
+    args = parser.parse_args()
+    cases = audit_cases()
+    if not 1 <= args.limit <= len(cases):
+        parser.error(f"limit must be 1–{len(cases)}")
+    reviews = {}
+    if args.support_review:
+        reviews = json.loads(args.support_review.read_text())
+        if not isinstance(reviews, dict) or any(type(value) is not bool for value in reviews.values()):
+            parser.error("Support review must be a map of claim IDs to booleans.")
+    if args.rescore:
+        if not args.support_review:
+            parser.error("--rescore requires --support-review.")
+        from .metrics import summarize
+
+        report = json.loads(args.rescore.read_text())
+        if report.get("mode") != "llm-live":
+            parser.error("--rescore expects live evaluation output.")
+        for row in report["cases"]:
+            for claim in row["claims"]:
+                claim["support_review"] = reviews.get(claim["id"]) if claim["quote_verified"] else False
+        report["metrics"] = summarize(report["cases"], report["retrieval"])
+        args.output.mkdir(parents=True, exist_ok=False)
+        (args.output / "evaluation.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+        print("Evidence:", args.output)
+        return
+    try:
+        backend = OpenAIBackend(args.model, max_calls=args.limit * maximum)
+    except ValueError as error:
+        parser.error(str(error))
+    indexed = SemanticRetriever()
+    relevance = retrieval_benchmark(indexed)
+    coordinator = GraphCoordinator(backend, retriever=indexed)
+    args.output.mkdir(parents=True, exist_ok=False)
+    evaluation, results = evaluate_workflow(coordinator, cases[:args.limit], relevance, reviews=reviews)
+    for row, result in zip(evaluation["cases"], results, strict=True):
+        name = row["id"]
+        (args.output / f"{name}.json").write_text(json.dumps(result, indent=2), encoding="utf-8")
+        (args.output / f"{name}.md").write_text(render_report(result), encoding="utf-8")
+        print(name, row["status"], "execution error:", bool(row["error"]), flush=True)
+    report = {"mode": "llm-live", "requested_model": backend.model, "retrieval": relevance, **evaluation}
+    (args.output / "evaluation.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    print("Evidence:", args.output)
+    if any(row["error"] for row in evaluation["cases"]):
+        raise SystemExit(2)
+
+
+if __name__ == "__main__":
+    main()

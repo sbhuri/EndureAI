@@ -1,0 +1,38 @@
+[
+  {
+    "id": "shelter-space",
+    "query": "How do planners estimate how much space congregate shelters need for people with different functional needs?",
+    "hazard": "winter storm",
+    "relevant_pages": {"fnss": [17, 18]}
+  },
+  {
+    "id": "backup-power",
+    "query": "What redundancy should a congregate shelter plan for when its electricity supply fails?",
+    "hazard": "winter storm",
+    "relevant_pages": {"fnss": [19, 21]}
+  },
+  {
+    "id": "access-barriers",
+    "query": "What should planners consider before using a shelter building that has physical accessibility barriers?",
+    "hazard": "flood",
+    "relevant_pages": {"fnss": [18, 19]}
+  },
+  {
+    "id": "compare-alternatives",
+    "query": "How can a planning team evaluate different courses of action against assumptions, decision points and resource shortfalls?",
+    "hazard": "tornado",
+    "relevant_pages": {"cpg101": [61, 62, 63, 64]}
+  },
+  {
+    "id": "evacuation-facilities",
+    "query": "How do arrival points, reception processing sites and mass care shelters fit into evacuation planning?",
+    "hazard": "wildfire",
+    "relevant_pages": {"evacuation": [13]}
+  },
+  {
+    "id": "hurricane-zones",
+    "query": "Which public preparedness example maps coastal Virginia storm surge evacuation zones?",
+    "hazard": "hurricane",
+    "relevant_pages": {"evacuation": [23]}
+  }
+]

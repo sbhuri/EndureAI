@@ -11,7 +11,8 @@ from chromadb.utils.embedding_functions import DefaultEmbeddingFunction
 import numpy as np
 import tiktoken
 
-from .core import ROOT
+from .core import ROOT, ResearchAgent, rank_bm25
+from .summarizer import _tokenize
 
 CHUNK_TOKENS = 500
 OVERLAP_TOKENS = 80
@@ -167,17 +168,24 @@ def audit_query(scenario, original):
 
 
 class LexicalRetriever:
-    """Use the existing page-based BM25 implementation with the same audit query."""
-    name = "bm25-pages"
+    """Use existing BM25 weighting on the original pages or the semantic index's chunks."""
 
-    def __init__(self, corpus=None):
-        from .core import ResearchAgent
-
+    def __init__(self, corpus=None, *, chunks=None):
         self.baseline = ResearchAgent(corpus)
         self.hash = self.baseline.hash
+        self.name = "bm25-pages" if chunks is None else "bm25-matched-chunks"
+        self.chunks = chunks
+        self.chunk_tokens = [_tokenize(chunk["text"]) for chunk in chunks] if chunks is not None else None
 
     def retrieve(self, query, k=TOP_K, *, hazard="all-hazards"):
-        return self.baseline.retrieve(query, k)
+        if self.chunks is None:
+            return self.baseline.retrieve(query, k)
+        eligible = [(chunk, tokens) for chunk, tokens in zip(self.chunks, self.chunk_tokens, strict=True)
+                    if chunk["hazard"] in {"all-hazards", hazard_tag(hazard)}]
+        if not eligible:
+            return []
+        passages, tokens = zip(*eligible)
+        return [{**chunk, "score": score} for score, chunk in rank_bm25(passages, tokens, query)[:k]]
 
     def run(self, scenario, original):
         return self.retrieve(audit_query(scenario, original), hazard=scenario["hazard"])

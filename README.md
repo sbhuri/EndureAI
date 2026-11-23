@@ -1,68 +1,57 @@
-# EndureAI
+# EndureAI: A Multi-Agent System for Disaster Preparedness Plan Auditing
 
-LLM-powered four-agent auditing of synthetic disaster shelter preparedness plans, grounded in a local FEMA guidance corpus.
+EndureAI audits existing synthetic county shelter plans against their stated assumptions and public FEMA planning guidance. It tests what happens when those assumptions change, measures resulting gaps, and evaluates alternative allocations for human review. The prototype covers synthetic shelter capacity, availability, accessibility, and backup power.
 
-**Development status:** API integration implemented and locally tested. Live LLM evaluation is pending API credentials. No live results are claimed. Earlier deterministic measurements are preserved under `evidence/` and documented in `BASELINE.md`.
+## Run an audit
 
-## Quick start
-
-Requires Python 3.10 or later. From the project folder:
+Use Python 3.10 or later. The prototype was tested with Python 3.12.
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 python3 -m pip install -r requirements.txt
-export OPENAI_MODEL="your-supported-responses-model"
-python3 scripts/run_secure.py data/scenarios/winter_shortage.json --output runs/demo
+python3 scripts/run_secure.py data/scenarios/checkpoint_winter_plan.json \
+  --perturbations data/scenarios/checkpoint_shelter_loss.json \
+  --output runs/shelter-loss
 ```
 
-The secure launcher prompts for your API key with hidden input and holds it in the current process only. If `OPENAI_API_KEY` is already set, no prompt is needed. The model is configurable rather than silently pinned to the course sample's older `gpt-4.1-mini`. Choose a model available to your account that supports Responses structured outputs. Never put credentials in chat, source files, screenshots, or commits. No `.env` file is automatically loaded.
+Choose a Responses API model available to your account that supports structured outputs. The secure launcher prompts for the model and API key when they are missing. It holds the key in the current process. Use `python3 -m endureai.cli` directly when `OPENAI_MODEL` and `OPENAI_API_KEY` are set. A three-layer audit permits up to 26 logical API calls, including one Research correction attempt. The SDK may retry transport failures. Paid live evaluation begins with one scenario.
 
-Alternatively, set `OPENAI_API_KEY` in your local environment and run:
+The example starts with 450 usable spaces for 400 people. The perturbation makes a 200-space shelter unavailable and retains the submitted allocation for audit. That leaves 250 usable spaces and a 150-space shortage. Perturbation JSON can change demand, the power requirement, or an existing shelter's availability, capacity, accessibility, or backup power. The input validator requires explicitly synthetic data and routes declared operational use to human intervention.
 
-```bash
-python3 -m endureai.cli data/scenarios/winter_shortage.json --output runs/demo
-python3 -m endureai.evaluate_live --limit 1
-```
+The default retriever uses the local Chroma index. It loads the embedding model and tokenizer on first use and can reuse their caches. Use `--retrieval bm25` for the original page-based retrieval, or `--mode baseline` for the original deterministic workflow. Live mode requires valid configuration and writes a Markdown report and JSON trace.
 
-The default CLI mode uses live OpenAI API calls. Missing configuration is an error; there is no silent deterministic fallback. Each scenario uses at most 11 logical model calls over two rounds; the SDK permits one retry per call. API charges apply. Start with one scenario before running all ten (`--limit 10`).
+## Workflow
 
-## Four cooperating agents
+1. **Coordinator** validates the submitted allocation and records synthetic assumptions, perturbations, and baseline arithmetic in LangGraph state.
+2. **Research** retrieves the five most similar FEMA passages after filtering for hazard applicability. It synthesizes guidance with exact quotations. A citation failure permits one correction using the same evidence.
+3. **Auditor** reviews the submitted plan and its evidence first. A passing plan goes straight to human review. For a plan with gaps, **Planning** proposes up to three actions per parent using the existing resource inventory. The Auditor rejects hard violations before requesting model review of eligible candidates.
+4. **Coordinator** keeps up to two eligible branches per layer over at most three layers. The score weights feasibility 40%, shortage reduction 25%, guidance alignment 20%, and practicality 15%. Partial candidates need at least 70 points to continue. The workflow records prior checks and rejected branches as feedback, then clears a passing alternative for human review or escalates the remaining gaps.
 
-1. **Research:** retrieves FEMA pages with BM25, then asks the LLM to synthesize findings with page citations and exact supporting quotations.
-2. **Planning:** asks the LLM for up to three structured alternative allocations using only the supplied shelter inventory.
-3. **Auditor:** independently asks the LLM to review guidance and candidate claims, alongside deterministic capacity, assignment, accessibility, power, and inventory checks.
-4. **Coordinator:** asks the LLM whether to accept a passing candidate for review, request revision, or escalate. Code enforces the round bound and prevents acceptance without a passing audit.
+Safety escalations cover missing or contradictory inputs, insufficient or conflicting evidence, unverified citations, exhausted search, unavailable feasible alternatives, and attempts at operational use. An auditor verifies source IDs and exact quotes, and the workflow records the model's assessment of alignment. A human reviews whether the cited text substantively supports a live claim. All results are educational and require human review. Shared working memory lasts one audit. Persistent cross-audit memory is future scope.
 
-The same configurable model serves all four roles in separate requests. Shared scenario state, candidate feedback, and model-call records provide per-run memory. No cross-run memory, LangGraph, ChromaDB, or free-form plan PDF ingestion is implemented. Multiple alternatives and bounded revision are implemented; hidden chain-of-thought is neither requested nor recorded.
+## Public reference corpus
 
-The code checks that a cited quotation appears in a retrieved page. This validates provenance, **not semantic entailment**. LLM review is also fallible. All outputs require human review; no result certifies emergency readiness or FEMA compliance.
+The corpus contains selected sections of FEMA's 2010 Functional Needs Support Services guidance, 2019 *Planning Considerations: Evacuation and Shelter-in-Place*, and 2021 *CPG 101 v3*. The extracts record titles, dates, original and government mirror URLs, PDF hashes, sections, PDF page ranges, and hazard tags. Chroma stores overlapping chunks of roughly 400–600 tokens using pretrained MiniLM embeddings and cosine distance. The sources are dated planning guidance. Shelter-specific facts and constraints come from the synthetic inputs.
 
-## Data and scope
+`scripts/ingest_guidance.py` regenerates the newer extracts from the two cited PDFs using Poppler. The versioned JSON extracts are sufficient to build the index. Staffing, transport, supplies, medical triage, and live hazard feeds are outside the implemented shelter-allocation scope.
 
-Inputs are explicitly synthetic JSON scenarios in `data/scenarios/`. They cover shelter capacity, assignments, closure, availability, accessibility, and backup power. Hazard names are descriptive, not hazard-specific simulation models. Counts and boolean facility flags are supplied assumptions, not independently verified facts. Transport, staffing, medical triage, food, water, and live conditions remain out of scope.
-
-`data/corpus.json` contains page-labelled text extracted from FEMA's November 2010 *Guidance on Planning for Integration of Functional Needs Support Services in General Population Shelters*. Provenance includes the original URL, official New York DHSES mirror URL, retrieval timestamp, and PDF hash. This historical source must not be presented as current legal advice. The original PDF and course ZIP reference files are retained in the local deliverable; the public development branch contains the runnable extracted corpus and attribution, without the full course reference archive.
-
-## Tests and evidence
+## Tests and evaluation
 
 ```bash
 python3 -m unittest discover -s tests -v
+python3 -m endureai.evaluate_checkpoints --output runs/checkpoint_metrics.json
+python3 -m endureai.evaluate_live --limit 1
 ```
 
-Tests include independently checked arithmetic, a 144-combination allocation grid, LLM workflow test doubles, bounded revision, refusal/incomplete responses, fabricated citations, invented shelters, schema validation, call budgets, and rejection of unsafe approvals. Mock tests are **not** evidence of live model quality.
+[Checkpoint results](evidence/CHECKPOINT_RESULTS.md) report the actual scripted-agent and local-embedding results, the matched-chunk and original BM25 comparisons, and all seven Checkpoint 6 metrics. [Machine-readable measurement](evidence/checkpoint_metrics.json) contains the cases and retrieval hits. The [prior baseline](BASELINE.md) remains reproducible.
 
-`evidence/llm_integration_tests.txt` records the local test run. `evidence/LIVE_STATUS.json` records that live evaluation has not yet run. Earlier `evidence/EVALUATION.md` and scenario traces are explicitly deterministic baseline results and must not be represented as LLM results.
+The paid evaluator records model calls, usage, per-case metrics, and claim IDs. A human reviewer can map each claim ID to a JSON boolean for substantive support, then rescore the saved run without API calls:
 
-Real runs write JSON traces and Markdown audits under `runs/`, ignored by Git until intentionally reviewed. Each call records its agent role, instructions, input, model ID, response ID, token usage, duration, output, and sanitized errors. Source code and corpus hashes accompany the run. `evaluate_live` records expected-versus-observed scenario status, execution failures, tokens, and rejected proposals. Semantic quality still requires independent human review; synthetic status matching alone is insufficient.
+```bash
+python3 -m endureai.evaluate_live \
+  --rescore runs/live-result/evaluation.json \
+  --support-review reviews.json --output runs/reviewed
+```
 
-## Implementation map
-
-- `endureai/llm.py`: four agents, Responses API adapter, schemas, citation and proposal validation.
-- `endureai/core.py`: retrieval and independent constraint tools; deterministic baseline.
-- `endureai/cli.py`: default live workflow and report output.
-- `endureai/evaluate_live.py`: actual API evaluation runner.
-- `tests/`: deterministic and mocked integration tests.
-- `STARTER_INSPECTION.md`: original scaffold findings and attribution.
-
-This adapts the CMU research-agent starter. Its extractive summarizer is reused with attribution. The solution ZIP's optional API-writer pattern informed the integration; EndureAI extends API use to the four agent roles. Do not claim the course reference implemented these disaster-specific components.
+The prototype adapts the CMU research-agent starter, including its extractive summarizer. See [starter attribution](STARTER_INSPECTION.md) for the scaffold's contribution.

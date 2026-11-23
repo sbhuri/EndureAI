@@ -4,7 +4,7 @@ import unittest
 
 from endureai.core import ROOT
 from endureai.graph import GraphCoordinator, max_model_calls, stress_plan
-from endureai.llm import render_report
+from endureai.llm import OpenAIBackend, render_report
 
 PAGES = [{"id": "FEMA-example", "url": "https://www.fema.gov/",
           "text": "Exercise planners should check accessible shelter capacity and backup power."}]
@@ -142,6 +142,43 @@ class GraphTests(unittest.TestCase):
         self.assertEqual(result["depth"], 2)
         second = [x for x in backend.records if x["agent"] == "Planning"][1]
         self.assertIn("CLOSED_ALLOCATION", str(second["input"]["feedback"]))
+
+    def test_graph_uses_sdk_structured_responses_and_records_citation_retry(self):
+        import httpx
+        from openai import OpenAI
+
+        captured = []
+        invalid_claims = copy.deepcopy(CLAIMS)
+        invalid_claims[0]["citations"][0]["quote"] = "Text that is absent from the passage."
+        repair = alternative(("A", 250, True), ("B", 150, True))
+        fixture = FakeBackend([[repair]])
+
+        def respond(request):
+            data = json.loads(request.content)
+            name = data["text"]["format"]["name"]
+            payload = json.loads(data["input"])
+            captured.append((name, payload, data["store"]))
+            output = fixture.ask(name.title(), "", payload, None)
+            if len(captured) == 1:
+                output["findings"] = invalid_claims
+            return httpx.Response(200, json={
+                "id": "resp_test", "object": "response", "created_at": 1,
+                "status": "completed", "model": "test-model",
+                "output": [{"type": "message", "id": "msg_test", "role": "assistant",
+                            "status": "completed", "content": [
+                                {"type": "output_text", "text": json.dumps(output), "annotations": []}
+                            ]}],
+            })
+
+        with OpenAI(api_key="test-only-placeholder",
+                    http_client=httpx.Client(transport=httpx.MockTransport(respond))) as client:
+            backend = OpenAIBackend("test-model", client=client, max_calls=max_model_calls(3))
+            result = self.run_graph(load("winter_shortage"), backend)
+        self.assertEqual(result["status"], "REVISION_FOR_REVIEW")
+        self.assertEqual([entry[0] for entry in captured],
+                         ["research", "research", "auditor", "planning", "auditor", "coordinator"])
+        self.assertIn("validation_feedback", captured[1][1])
+        self.assertTrue(all(entry[2] is False for entry in captured))
 
     def test_global_working_state_is_fresh_for_each_run(self):
         backend = FakeBackend()

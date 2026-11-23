@@ -1,0 +1,2836 @@
+{
+  "mode": "real local MiniLM and Chroma retrieval, scripted agent outputs",
+  "run_at": "2026-11-23T07:15:51.274528+00:00",
+  "semantic_chunks": 25,
+  "corpus_sha256": "175fcc5c46bcbfacc6a09ed8c220d4d6cd81fba06e8c681afd28f02e90aebd23",
+  "indexing_seconds": 3.1868384069998683,
+  "python_version": "3.12.14",
+  "package_versions": {
+    "chromadb": "1.5.9",
+    "langgraph": "1.2.24",
+    "tiktoken": "0.14.0",
+    "openai": "2.38.0"
+  },
+  "model_calls_per_audit_cap": 26,
+  "retrieval": {
+    "semantic": {
+      "retriever": "chroma-minilm",
+      "queries": [
+        {
+          "id": "shelter-space",
+          "passages": [
+            {
+              "id": "fnss-s1-t840",
+              "document": "fnss",
+              "pages": [
+                16,
+                17
+              ],
+              "relevant": true
+            },
+            {
+              "id": "fnss-s1-t0",
+              "document": "fnss",
+              "pages": [
+                15,
+                16
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-s2-t0",
+              "document": "fnss",
+              "pages": [
+                18,
+                19
+              ],
+              "relevant": true
+            },
+            {
+              "id": "evacuation-s1-t0",
+              "document": "evacuation",
+              "pages": [
+                13
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-s2-t740",
+              "document": "fnss",
+              "pages": [
+                19,
+                20
+              ],
+              "relevant": false
+            }
+          ],
+          "hit_at_5": true
+        },
+        {
+          "id": "backup-power",
+          "passages": [
+            {
+              "id": "fnss-s3-t0",
+              "document": "fnss",
+              "pages": [
+                21
+              ],
+              "relevant": true
+            },
+            {
+              "id": "fnss-s1-t0",
+              "document": "fnss",
+              "pages": [
+                15,
+                16
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-s2-t420",
+              "document": "fnss",
+              "pages": [
+                18,
+                19,
+                20
+              ],
+              "relevant": true
+            },
+            {
+              "id": "evacuation-s4-t0",
+              "document": "evacuation",
+              "pages": [
+                26
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-s2-t740",
+              "document": "fnss",
+              "pages": [
+                19,
+                20
+              ],
+              "relevant": true
+            }
+          ],
+          "hit_at_5": true
+        },
+        {
+          "id": "access-barriers",
+          "passages": [
+            {
+              "id": "fnss-s2-t0",
+              "document": "fnss",
+              "pages": [
+                18,
+                19
+              ],
+              "relevant": true
+            },
+            {
+              "id": "fnss-s1-t0",
+              "document": "fnss",
+              "pages": [
+                15,
+                16
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-s1-t840",
+              "document": "fnss",
+              "pages": [
+                16,
+                17
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-s2-t420",
+              "document": "fnss",
+              "pages": [
+                18,
+                19,
+                20
+              ],
+              "relevant": true
+            },
+            {
+              "id": "evacuation-s4-t0",
+              "document": "evacuation",
+              "pages": [
+                26
+              ],
+              "relevant": false
+            }
+          ],
+          "hit_at_5": true
+        },
+        {
+          "id": "compare-alternatives",
+          "passages": [
+            {
+              "id": "cpg101-s2-t992",
+              "document": "cpg101",
+              "pages": [
+                63
+              ],
+              "relevant": true
+            },
+            {
+              "id": "cpg101-s2-t840",
+              "document": "cpg101",
+              "pages": [
+                62,
+                63
+              ],
+              "relevant": true
+            },
+            {
+              "id": "cpg101-s2-t420",
+              "document": "cpg101",
+              "pages": [
+                61,
+                62
+              ],
+              "relevant": true
+            },
+            {
+              "id": "cpg101-s3-t0",
+              "document": "cpg101",
+              "pages": [
+                64,
+                65
+              ],
+              "relevant": true
+            },
+            {
+              "id": "cpg101-s2-t0",
+              "document": "cpg101",
+              "pages": [
+                61,
+                62
+              ],
+              "relevant": true
+            }
+          ],
+          "hit_at_5": true
+        },
+        {
+          "id": "evacuation-facilities",
+          "passages": [
+            {
+              "id": "evacuation-s1-t0",
+              "document": "evacuation",
+              "pages": [
+                13
+              ],
+              "relevant": true
+            },
+            {
+              "id": "evacuation-s4-t420",
+              "document": "evacuation",
+              "pages": [
+                26,
+                27
+              ],
+              "relevant": false
+            },
+            {
+              "id": "evacuation-s2-t0",
+              "document": "evacuation",
+              "pages": [
+                14,
+                15
+              ],
+              "relevant": false
+            },
+            {
+              "id": "evacuation-s4-t0",
+              "document": "evacuation",
+              "pages": [
+                26
+              ],
+              "relevant": false
+            },
+            {
+              "id": "evacuation-s4-t840",
+              "document": "evacuation",
+              "pages": [
+                27,
+                28
+              ],
+              "relevant": false
+            }
+          ],
+          "hit_at_5": true
+        },
+        {
+          "id": "hurricane-zones",
+          "passages": [
+            {
+              "id": "evacuation-s3-t0",
+              "document": "evacuation",
+              "pages": [
+                23
+              ],
+              "relevant": true
+            },
+            {
+              "id": "evacuation-s4-t420",
+              "document": "evacuation",
+              "pages": [
+                26,
+                27
+              ],
+              "relevant": false
+            },
+            {
+              "id": "evacuation-s4-t840",
+              "document": "evacuation",
+              "pages": [
+                27,
+                28
+              ],
+              "relevant": false
+            },
+            {
+              "id": "evacuation-s1-t0",
+              "document": "evacuation",
+              "pages": [
+                13
+              ],
+              "relevant": false
+            },
+            {
+              "id": "cpg101-s1-t0",
+              "document": "cpg101",
+              "pages": [
+                60
+              ],
+              "relevant": false
+            }
+          ],
+          "hit_at_5": true
+        }
+      ],
+      "passage_relevance": {
+        "correct": 14,
+        "total": 30,
+        "rate": 0.4666666666666667
+      },
+      "precision_at_5": {
+        "correct": 14,
+        "total": 30,
+        "rate": 0.4666666666666667
+      },
+      "hit_at_5": {
+        "correct": 6,
+        "total": 6,
+        "rate": 1.0
+      }
+    },
+    "bm25": {
+      "retriever": "bm25-pages",
+      "queries": [
+        {
+          "id": "shelter-space",
+          "passages": [
+            {
+              "id": "fnss-p137",
+              "document": "fnss",
+              "pages": [
+                137
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p10",
+              "document": "fnss",
+              "pages": [
+                10
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p20",
+              "document": "fnss",
+              "pages": [
+                20
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p149",
+              "document": "fnss",
+              "pages": [
+                149
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p39",
+              "document": "fnss",
+              "pages": [
+                39
+              ],
+              "relevant": false
+            }
+          ],
+          "hit_at_5": false
+        },
+        {
+          "id": "backup-power",
+          "passages": [
+            {
+              "id": "fnss-p147",
+              "document": "fnss",
+              "pages": [
+                147
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p150",
+              "document": "fnss",
+              "pages": [
+                150
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p28",
+              "document": "fnss",
+              "pages": [
+                28
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p164",
+              "document": "fnss",
+              "pages": [
+                164
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p34",
+              "document": "fnss",
+              "pages": [
+                34
+              ],
+              "relevant": false
+            }
+          ],
+          "hit_at_5": false
+        },
+        {
+          "id": "access-barriers",
+          "passages": [
+            {
+              "id": "fnss-p18",
+              "document": "fnss",
+              "pages": [
+                18
+              ],
+              "relevant": true
+            },
+            {
+              "id": "fnss-p51",
+              "document": "fnss",
+              "pages": [
+                51
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p19",
+              "document": "fnss",
+              "pages": [
+                19
+              ],
+              "relevant": true
+            },
+            {
+              "id": "fnss-p17",
+              "document": "fnss",
+              "pages": [
+                17
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p145",
+              "document": "fnss",
+              "pages": [
+                145
+              ],
+              "relevant": false
+            }
+          ],
+          "hit_at_5": true
+        },
+        {
+          "id": "compare-alternatives",
+          "passages": [
+            {
+              "id": "fnss-p137",
+              "document": "fnss",
+              "pages": [
+                137
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p10",
+              "document": "fnss",
+              "pages": [
+                10
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p24",
+              "document": "fnss",
+              "pages": [
+                24
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p16",
+              "document": "fnss",
+              "pages": [
+                16
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p149",
+              "document": "fnss",
+              "pages": [
+                149
+              ],
+              "relevant": false
+            }
+          ],
+          "hit_at_5": false
+        },
+        {
+          "id": "evacuation-facilities",
+          "passages": [
+            {
+              "id": "fnss-p37",
+              "document": "fnss",
+              "pages": [
+                37
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p139",
+              "document": "fnss",
+              "pages": [
+                139
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p10",
+              "document": "fnss",
+              "pages": [
+                10
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p138",
+              "document": "fnss",
+              "pages": [
+                138
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p3",
+              "document": "fnss",
+              "pages": [
+                3
+              ],
+              "relevant": false
+            }
+          ],
+          "hit_at_5": false
+        },
+        {
+          "id": "hurricane-zones",
+          "passages": [
+            {
+              "id": "fnss-p148",
+              "document": "fnss",
+              "pages": [
+                148
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p138",
+              "document": "fnss",
+              "pages": [
+                138
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p5",
+              "document": "fnss",
+              "pages": [
+                5
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p30",
+              "document": "fnss",
+              "pages": [
+                30
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-p18",
+              "document": "fnss",
+              "pages": [
+                18
+              ],
+              "relevant": false
+            }
+          ],
+          "hit_at_5": false
+        }
+      ],
+      "passage_relevance": {
+        "correct": 2,
+        "total": 30,
+        "rate": 0.06666666666666667
+      },
+      "precision_at_5": {
+        "correct": 2,
+        "total": 30,
+        "rate": 0.06666666666666667
+      },
+      "hit_at_5": {
+        "correct": 1,
+        "total": 6,
+        "rate": 0.16666666666666666
+      }
+    },
+    "bm25_matched_chunks": {
+      "retriever": "bm25-matched-chunks",
+      "queries": [
+        {
+          "id": "shelter-space",
+          "passages": [
+            {
+              "id": "fnss-s2-t740",
+              "document": "fnss",
+              "pages": [
+                19,
+                20
+              ],
+              "relevant": false
+            },
+            {
+              "id": "cpg101-s2-t420",
+              "document": "cpg101",
+              "pages": [
+                61,
+                62
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-s2-t420",
+              "document": "fnss",
+              "pages": [
+                18,
+                19,
+                20
+              ],
+              "relevant": true
+            },
+            {
+              "id": "cpg101-s2-t840",
+              "document": "cpg101",
+              "pages": [
+                62,
+                63
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-s1-t840",
+              "document": "fnss",
+              "pages": [
+                16,
+                17
+              ],
+              "relevant": true
+            }
+          ],
+          "hit_at_5": true
+        },
+        {
+          "id": "backup-power",
+          "passages": [
+            {
+              "id": "fnss-s2-t740",
+              "document": "fnss",
+              "pages": [
+                19,
+                20
+              ],
+              "relevant": true
+            },
+            {
+              "id": "cpg101-s2-t840",
+              "document": "cpg101",
+              "pages": [
+                62,
+                63
+              ],
+              "relevant": false
+            },
+            {
+              "id": "cpg101-s1-t0",
+              "document": "cpg101",
+              "pages": [
+                60
+              ],
+              "relevant": false
+            },
+            {
+              "id": "cpg101-s2-t0",
+              "document": "cpg101",
+              "pages": [
+                61,
+                62
+              ],
+              "relevant": false
+            },
+            {
+              "id": "cpg101-s2-t992",
+              "document": "cpg101",
+              "pages": [
+                63
+              ],
+              "relevant": false
+            }
+          ],
+          "hit_at_5": true
+        },
+        {
+          "id": "access-barriers",
+          "passages": [
+            {
+              "id": "fnss-s2-t0",
+              "document": "fnss",
+              "pages": [
+                18,
+                19
+              ],
+              "relevant": true
+            },
+            {
+              "id": "cpg101-s2-t420",
+              "document": "cpg101",
+              "pages": [
+                61,
+                62
+              ],
+              "relevant": false
+            },
+            {
+              "id": "evacuation-s4-t1204",
+              "document": "evacuation",
+              "pages": [
+                28
+              ],
+              "relevant": false
+            },
+            {
+              "id": "cpg101-s2-t0",
+              "document": "cpg101",
+              "pages": [
+                61,
+                62
+              ],
+              "relevant": false
+            },
+            {
+              "id": "cpg101-s1-t0",
+              "document": "cpg101",
+              "pages": [
+                60
+              ],
+              "relevant": false
+            }
+          ],
+          "hit_at_5": true
+        },
+        {
+          "id": "compare-alternatives",
+          "passages": [
+            {
+              "id": "cpg101-s2-t840",
+              "document": "cpg101",
+              "pages": [
+                62,
+                63
+              ],
+              "relevant": true
+            },
+            {
+              "id": "cpg101-s2-t420",
+              "document": "cpg101",
+              "pages": [
+                61,
+                62
+              ],
+              "relevant": true
+            },
+            {
+              "id": "cpg101-s2-t992",
+              "document": "cpg101",
+              "pages": [
+                63
+              ],
+              "relevant": true
+            },
+            {
+              "id": "cpg101-s3-t0",
+              "document": "cpg101",
+              "pages": [
+                64,
+                65
+              ],
+              "relevant": true
+            },
+            {
+              "id": "cpg101-s1-t0",
+              "document": "cpg101",
+              "pages": [
+                60
+              ],
+              "relevant": false
+            }
+          ],
+          "hit_at_5": true
+        },
+        {
+          "id": "evacuation-facilities",
+          "passages": [
+            {
+              "id": "evacuation-s1-t0",
+              "document": "evacuation",
+              "pages": [
+                13
+              ],
+              "relevant": true
+            },
+            {
+              "id": "cpg101-s2-t420",
+              "document": "cpg101",
+              "pages": [
+                61,
+                62
+              ],
+              "relevant": false
+            },
+            {
+              "id": "fnss-s1-t840",
+              "document": "fnss",
+              "pages": [
+                16,
+                17
+              ],
+              "relevant": false
+            },
+            {
+              "id": "evacuation-s4-t1204",
+              "document": "evacuation",
+              "pages": [
+                28
+              ],
+              "relevant": false
+            },
+            {
+              "id": "cpg101-s2-t840",
+              "document": "cpg101",
+              "pages": [
+                62,
+                63
+              ],
+              "relevant": false
+            }
+          ],
+          "hit_at_5": true
+        },
+        {
+          "id": "hurricane-zones",
+          "passages": [
+            {
+              "id": "evacuation-s3-t0",
+              "document": "evacuation",
+              "pages": [
+                23
+              ],
+              "relevant": true
+            },
+            {
+              "id": "evacuation-s4-t420",
+              "document": "evacuation",
+              "pages": [
+                26,
+                27
+              ],
+              "relevant": false
+            },
+            {
+              "id": "cpg101-s1-t0",
+              "document": "cpg101",
+              "pages": [
+                60
+              ],
+              "relevant": false
+            },
+            {
+              "id": "evacuation-s4-t840",
+              "document": "evacuation",
+              "pages": [
+                27,
+                28
+              ],
+              "relevant": false
+            },
+            {
+              "id": "evacuation-s4-t0",
+              "document": "evacuation",
+              "pages": [
+                26
+              ],
+              "relevant": false
+            }
+          ],
+          "hit_at_5": true
+        }
+      ],
+      "passage_relevance": {
+        "correct": 10,
+        "total": 30,
+        "rate": 0.3333333333333333
+      },
+      "precision_at_5": {
+        "correct": 10,
+        "total": 30,
+        "rate": 0.3333333333333333
+      },
+      "hit_at_5": {
+        "correct": 6,
+        "total": 6,
+        "rate": 1.0
+      }
+    }
+  },
+  "strategies": {
+    "beam": {
+      "metrics": {
+        "calculation_accuracy": {
+          "correct": 11,
+          "total": 11,
+          "rate": 1.0
+        },
+        "constraint_compliance": {
+          "correct": 19,
+          "total": 20,
+          "rate": 0.95
+        },
+        "retrieval_relevance": {
+          "correct": 14,
+          "total": 30,
+          "rate": 0.4666666666666667
+        },
+        "groundedness": {
+          "correct": 41,
+          "total": 41,
+          "rate": 1.0,
+          "unreviewed": 0,
+          "quote_provenance": {
+            "correct": 41,
+            "total": 41,
+            "rate": 1.0
+          }
+        },
+        "gap_detection_rate": {
+          "correct": 18,
+          "total": 18,
+          "rate": 1.0
+        },
+        "escalation_accuracy": {
+          "correct": 13,
+          "total": 13,
+          "rate": 1.0
+        },
+        "latency": {
+          "unit": "seconds",
+          "cases": 13,
+          "median": 0.13259796800002732,
+          "p95": 0.24971617600022,
+          "total": 1.6022994770005425
+        },
+        "accepted_hard_violations": 0
+      },
+      "cases": [
+        {
+          "id": "winter_shortage",
+          "seconds": 0.1426592810000784,
+          "shortage_expected": 150,
+          "shortage_observed": 150,
+          "gaps_expected": 2,
+          "gaps_detected": 2,
+          "unexpected_gaps": 0,
+          "actual_codes": [
+            "CAPACITY_SHORTAGE",
+            "DEMAND_MISMATCH"
+          ],
+          "proposal_count": 3,
+          "within_resource_limits": 3,
+          "passing_alternatives": 1,
+          "accepted_hard_violations": 0,
+          "selected_shortage": 0,
+          "escalation_expected": false,
+          "escalation_observed": false,
+          "escalation": null,
+          "calls": 7,
+          "status": "REVISION_FOR_REVIEW",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Research",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "insufficient_inventory",
+          "seconds": 0.13259796800002732,
+          "shortage_expected": 150,
+          "shortage_observed": 150,
+          "gaps_expected": 2,
+          "gaps_detected": 2,
+          "unexpected_gaps": 0,
+          "actual_codes": [
+            "CAPACITY_SHORTAGE",
+            "DEMAND_MISMATCH"
+          ],
+          "proposal_count": 1,
+          "within_resource_limits": 1,
+          "passing_alternatives": 0,
+          "accepted_hard_violations": 0,
+          "selected_shortage": null,
+          "escalation_expected": true,
+          "escalation_observed": true,
+          "escalation": {
+            "code": "NO_FEASIBLE_ALTERNATIVE",
+            "detail": "No branch remained eligible for refinement. Review the rejected or unresolved proposals."
+          },
+          "calls": 4,
+          "status": "REVIEW_REQUIRED",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Research",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "balanced",
+          "seconds": 0.12971382299997458,
+          "shortage_expected": 0,
+          "shortage_observed": 0,
+          "gaps_expected": 0,
+          "gaps_detected": 0,
+          "unexpected_gaps": 0,
+          "actual_codes": [],
+          "proposal_count": 0,
+          "within_resource_limits": 0,
+          "passing_alternatives": 0,
+          "accepted_hard_violations": 0,
+          "selected_shortage": 0,
+          "escalation_expected": false,
+          "escalation_observed": false,
+          "escalation": null,
+          "calls": 2,
+          "status": "CHECKS_PASSED",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Research",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "over_allocation",
+          "seconds": 0.13015707399995335,
+          "shortage_expected": 150,
+          "shortage_observed": 150,
+          "gaps_expected": 2,
+          "gaps_detected": 2,
+          "unexpected_gaps": 0,
+          "actual_codes": [
+            "CAPACITY_SHORTAGE",
+            "OVER_CAPACITY"
+          ],
+          "proposal_count": 3,
+          "within_resource_limits": 2,
+          "passing_alternatives": 1,
+          "accepted_hard_violations": 0,
+          "selected_shortage": 0,
+          "escalation_expected": false,
+          "escalation_observed": false,
+          "escalation": null,
+          "calls": 6,
+          "status": "REVISION_FOR_REVIEW",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Research",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "power_gap",
+          "seconds": 0.12952995399996325,
+          "shortage_expected": 400,
+          "shortage_observed": 400,
+          "gaps_expected": 3,
+          "gaps_detected": 3,
+          "unexpected_gaps": 0,
+          "actual_codes": [
+            "CAPACITY_SHORTAGE",
+            "DEMAND_MISMATCH",
+            "POWER_GAP"
+          ],
+          "proposal_count": 2,
+          "within_resource_limits": 2,
+          "passing_alternatives": 0,
+          "accepted_hard_violations": 0,
+          "selected_shortage": null,
+          "escalation_expected": true,
+          "escalation_observed": true,
+          "escalation": {
+            "code": "NO_FEASIBLE_ALTERNATIVE",
+            "detail": "No branch remained eligible for refinement. Review the rejected or unresolved proposals."
+          },
+          "calls": 5,
+          "status": "REVIEW_REQUIRED",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Research",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "access_gap",
+          "seconds": 0.13879232800013597,
+          "shortage_expected": 400,
+          "shortage_observed": 400,
+          "gaps_expected": 3,
+          "gaps_detected": 3,
+          "unexpected_gaps": 0,
+          "actual_codes": [
+            "ACCESS_GAP",
+            "CAPACITY_SHORTAGE",
+            "DEMAND_MISMATCH"
+          ],
+          "proposal_count": 2,
+          "within_resource_limits": 2,
+          "passing_alternatives": 0,
+          "accepted_hard_violations": 0,
+          "selected_shortage": null,
+          "escalation_expected": true,
+          "escalation_observed": true,
+          "escalation": {
+            "code": "NO_FEASIBLE_ALTERNATIVE",
+            "detail": "No branch remained eligible for refinement. Review the rejected or unresolved proposals."
+          },
+          "calls": 5,
+          "status": "REVIEW_REQUIRED",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "3306423ea34fc5d795b67f321eb9aa2ca014c4204ae3ecea707879e65e8439ca",
+              "role": "Research",
+              "claim": {
+                "statement": "and communities have additional codes and standards related to accessibility, emergency managers and shelter planners should be sure to identify and comply with these requirements as well. 19 If selected as an",
+                "citations": [
+                  {
+                    "page_id": "fnss-s2-t420",
+                    "quote": "and communities have additional codes and standards related to accessibility, emergency managers and shelter planners should be sure to identify and comply with these requirements as well. 19 If selected as an"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "3306423ea34fc5d795b67f321eb9aa2ca014c4204ae3ecea707879e65e8439ca",
+              "role": "Auditor",
+              "claim": {
+                "statement": "and communities have additional codes and standards related to accessibility, emergency managers and shelter planners should be sure to identify and comply with these requirements as well. 19 If selected as an",
+                "citations": [
+                  {
+                    "page_id": "fnss-s2-t420",
+                    "quote": "and communities have additional codes and standards related to accessibility, emergency managers and shelter planners should be sure to identify and comply with these requirements as well. 19 If selected as an"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "3306423ea34fc5d795b67f321eb9aa2ca014c4204ae3ecea707879e65e8439ca",
+              "role": "Auditor",
+              "claim": {
+                "statement": "and communities have additional codes and standards related to accessibility, emergency managers and shelter planners should be sure to identify and comply with these requirements as well. 19 If selected as an",
+                "citations": [
+                  {
+                    "page_id": "fnss-s2-t420",
+                    "quote": "and communities have additional codes and standards related to accessibility, emergency managers and shelter planners should be sure to identify and comply with these requirements as well. 19 If selected as an"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "3306423ea34fc5d795b67f321eb9aa2ca014c4204ae3ecea707879e65e8439ca",
+              "role": "Auditor",
+              "claim": {
+                "statement": "and communities have additional codes and standards related to accessibility, emergency managers and shelter planners should be sure to identify and comply with these requirements as well. 19 If selected as an",
+                "citations": [
+                  {
+                    "page_id": "fnss-s2-t420",
+                    "quote": "and communities have additional codes and standards related to accessibility, emergency managers and shelter planners should be sure to identify and comply with these requirements as well. 19 If selected as an"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "closed_allocation",
+          "seconds": 0.13094454700012648,
+          "shortage_expected": 400,
+          "shortage_observed": 400,
+          "gaps_expected": 3,
+          "gaps_detected": 3,
+          "unexpected_gaps": 0,
+          "actual_codes": [
+            "CAPACITY_SHORTAGE",
+            "CLOSED_ALLOCATION",
+            "DEMAND_MISMATCH"
+          ],
+          "proposal_count": 3,
+          "within_resource_limits": 3,
+          "passing_alternatives": 1,
+          "accepted_hard_violations": 0,
+          "selected_shortage": 0,
+          "escalation_expected": false,
+          "escalation_observed": false,
+          "escalation": null,
+          "calls": 7,
+          "status": "REVISION_FOR_REVIEW",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Research",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "zero_demand",
+          "seconds": 0.1336945310001738,
+          "shortage_expected": 0,
+          "shortage_observed": 0,
+          "gaps_expected": 0,
+          "gaps_detected": 0,
+          "unexpected_gaps": 0,
+          "actual_codes": [],
+          "proposal_count": 0,
+          "within_resource_limits": 0,
+          "passing_alternatives": 0,
+          "accepted_hard_violations": 0,
+          "selected_shortage": 0,
+          "escalation_expected": false,
+          "escalation_observed": false,
+          "escalation": null,
+          "calls": 2,
+          "status": "CHECKS_PASSED",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Research",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "surplus_assignment",
+          "seconds": 0.24971617600022,
+          "shortage_expected": 0,
+          "shortage_observed": 0,
+          "gaps_expected": 1,
+          "gaps_detected": 1,
+          "unexpected_gaps": 0,
+          "actual_codes": [
+            "DEMAND_MISMATCH"
+          ],
+          "proposal_count": 3,
+          "within_resource_limits": 3,
+          "passing_alternatives": 2,
+          "accepted_hard_violations": 0,
+          "selected_shortage": 0,
+          "escalation_expected": false,
+          "escalation_observed": false,
+          "escalation": null,
+          "calls": 7,
+          "status": "REVISION_FOR_REVIEW",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Research",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "power_not_required",
+          "seconds": 0.14213251000001037,
+          "shortage_expected": 0,
+          "shortage_observed": 0,
+          "gaps_expected": 0,
+          "gaps_detected": 0,
+          "unexpected_gaps": 0,
+          "actual_codes": [],
+          "proposal_count": 0,
+          "within_resource_limits": 0,
+          "passing_alternatives": 0,
+          "accepted_hard_violations": 0,
+          "selected_shortage": 0,
+          "escalation_expected": false,
+          "escalation_observed": false,
+          "escalation": null,
+          "calls": 2,
+          "status": "CHECKS_PASSED",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "033347f99f3541255788dd0a3dcac83ce7b66d70126919b7e30bc645f9814823",
+              "role": "Research",
+              "claim": {
+                "statement": "15 4.1. Key Considerations In Planning For Shelter Set-Up 4.1.1. Planning in Advance for FNSS The importance of advanced planning in developing and implementing FNSS in general population shelters cannot be overstated.",
+                "citations": [
+                  {
+                    "page_id": "fnss-s1-t0",
+                    "quote": "15 4.1. Key Considerations In Planning For Shelter Set-Up 4.1.1. Planning in Advance for FNSS The importance of advanced planning in developing and implementing FNSS in general population shelters cannot be overstated."
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "033347f99f3541255788dd0a3dcac83ce7b66d70126919b7e30bc645f9814823",
+              "role": "Auditor",
+              "claim": {
+                "statement": "15 4.1. Key Considerations In Planning For Shelter Set-Up 4.1.1. Planning in Advance for FNSS The importance of advanced planning in developing and implementing FNSS in general population shelters cannot be overstated.",
+                "citations": [
+                  {
+                    "page_id": "fnss-s1-t0",
+                    "quote": "15 4.1. Key Considerations In Planning For Shelter Set-Up 4.1.1. Planning in Advance for FNSS The importance of advanced planning in developing and implementing FNSS in general population shelters cannot be overstated."
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "checkpoint_winter_plan",
+          "seconds": 0.14049482499990518,
+          "shortage_expected": 150,
+          "shortage_observed": 150,
+          "gaps_expected": 2,
+          "gaps_detected": 2,
+          "unexpected_gaps": 0,
+          "actual_codes": [
+            "CAPACITY_SHORTAGE",
+            "UNAVAILABLE_OPEN"
+          ],
+          "proposal_count": 3,
+          "within_resource_limits": 3,
+          "passing_alternatives": 0,
+          "accepted_hard_violations": 0,
+          "selected_shortage": null,
+          "escalation_expected": true,
+          "escalation_observed": true,
+          "escalation": {
+            "code": "NO_FEASIBLE_ALTERNATIVE",
+            "detail": "No branch remained eligible for refinement. Review the rejected or unresolved proposals."
+          },
+          "calls": 6,
+          "status": "REVIEW_REQUIRED",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "c35f62d2e30e76f379a2fd1986d7ba2cac6ae72b441b9e018ffe4c06bd88c0ef",
+              "role": "Research",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "c35f62d2e30e76f379a2fd1986d7ba2cac6ae72b441b9e018ffe4c06bd88c0ef",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "c35f62d2e30e76f379a2fd1986d7ba2cac6ae72b441b9e018ffe4c06bd88c0ef",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "c35f62d2e30e76f379a2fd1986d7ba2cac6ae72b441b9e018ffe4c06bd88c0ef",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "c35f62d2e30e76f379a2fd1986d7ba2cac6ae72b441b9e018ffe4c06bd88c0ef",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "missing_demand",
+          "seconds": 0.0010584189999462978,
+          "shortage_expected": null,
+          "shortage_observed": null,
+          "gaps_expected": 0,
+          "gaps_detected": 0,
+          "unexpected_gaps": 0,
+          "actual_codes": [],
+          "proposal_count": 0,
+          "within_resource_limits": 0,
+          "passing_alternatives": 0,
+          "accepted_hard_violations": 0,
+          "selected_shortage": null,
+          "escalation_expected": true,
+          "escalation_observed": true,
+          "escalation": {
+            "code": "INPUT_CLARIFICATION",
+            "detail": "Demand must be a nonnegative integer."
+          },
+          "calls": 0,
+          "status": "REVIEW_REQUIRED",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [],
+          "error": null
+        },
+        {
+          "id": "active_emergency",
+          "seconds": 0.0008080410000275151,
+          "shortage_expected": null,
+          "shortage_observed": null,
+          "gaps_expected": 0,
+          "gaps_detected": 0,
+          "unexpected_gaps": 0,
+          "actual_codes": [],
+          "proposal_count": 0,
+          "within_resource_limits": 0,
+          "passing_alternatives": 0,
+          "accepted_hard_violations": 0,
+          "selected_shortage": null,
+          "escalation_expected": true,
+          "escalation_observed": true,
+          "escalation": {
+            "code": "OPERATIONAL_USE",
+            "detail": "EndureAI accepts synthetic planning exercises. Direct actual emergencies to local officials."
+          },
+          "calls": 0,
+          "status": "REVIEW_REQUIRED",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [],
+          "error": null
+        }
+      ]
+    },
+    "linear": {
+      "metrics": {
+        "calculation_accuracy": {
+          "correct": 11,
+          "total": 11,
+          "rate": 1.0
+        },
+        "constraint_compliance": {
+          "correct": 7,
+          "total": 8,
+          "rate": 0.875
+        },
+        "retrieval_relevance": {
+          "correct": 14,
+          "total": 30,
+          "rate": 0.4666666666666667
+        },
+        "groundedness": {
+          "correct": 29,
+          "total": 29,
+          "rate": 1.0,
+          "unreviewed": 0,
+          "quote_provenance": {
+            "correct": 29,
+            "total": 29,
+            "rate": 1.0
+          }
+        },
+        "gap_detection_rate": {
+          "correct": 18,
+          "total": 18,
+          "rate": 1.0
+        },
+        "escalation_accuracy": {
+          "correct": 12,
+          "total": 13,
+          "rate": 0.9230769230769231
+        },
+        "latency": {
+          "unit": "seconds",
+          "cases": 13,
+          "median": 0.13662087300008352,
+          "p95": 0.14647100900015175,
+          "total": 1.513586776000011
+        },
+        "accepted_hard_violations": 0
+      },
+      "cases": [
+        {
+          "id": "winter_shortage",
+          "seconds": 0.13768550100007815,
+          "shortage_expected": 150,
+          "shortage_observed": 150,
+          "gaps_expected": 2,
+          "gaps_detected": 2,
+          "unexpected_gaps": 0,
+          "actual_codes": [
+            "CAPACITY_SHORTAGE",
+            "DEMAND_MISMATCH"
+          ],
+          "proposal_count": 1,
+          "within_resource_limits": 1,
+          "passing_alternatives": 1,
+          "accepted_hard_violations": 0,
+          "selected_shortage": 0,
+          "escalation_expected": false,
+          "escalation_observed": false,
+          "escalation": null,
+          "calls": 5,
+          "status": "REVISION_FOR_REVIEW",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Research",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "insufficient_inventory",
+          "seconds": 0.1439363100000719,
+          "shortage_expected": 150,
+          "shortage_observed": 150,
+          "gaps_expected": 2,
+          "gaps_detected": 2,
+          "unexpected_gaps": 0,
+          "actual_codes": [
+            "CAPACITY_SHORTAGE",
+            "DEMAND_MISMATCH"
+          ],
+          "proposal_count": 1,
+          "within_resource_limits": 1,
+          "passing_alternatives": 0,
+          "accepted_hard_violations": 0,
+          "selected_shortage": null,
+          "escalation_expected": true,
+          "escalation_observed": true,
+          "escalation": {
+            "code": "NO_FEASIBLE_ALTERNATIVE",
+            "detail": "No branch remained eligible for refinement. Review the rejected or unresolved proposals."
+          },
+          "calls": 4,
+          "status": "REVIEW_REQUIRED",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Research",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "balanced",
+          "seconds": 0.14647100900015175,
+          "shortage_expected": 0,
+          "shortage_observed": 0,
+          "gaps_expected": 0,
+          "gaps_detected": 0,
+          "unexpected_gaps": 0,
+          "actual_codes": [],
+          "proposal_count": 0,
+          "within_resource_limits": 0,
+          "passing_alternatives": 0,
+          "accepted_hard_violations": 0,
+          "selected_shortage": 0,
+          "escalation_expected": false,
+          "escalation_observed": false,
+          "escalation": null,
+          "calls": 2,
+          "status": "CHECKS_PASSED",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Research",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "over_allocation",
+          "seconds": 0.1399324849999175,
+          "shortage_expected": 150,
+          "shortage_observed": 150,
+          "gaps_expected": 2,
+          "gaps_detected": 2,
+          "unexpected_gaps": 0,
+          "actual_codes": [
+            "CAPACITY_SHORTAGE",
+            "OVER_CAPACITY"
+          ],
+          "proposal_count": 1,
+          "within_resource_limits": 0,
+          "passing_alternatives": 0,
+          "accepted_hard_violations": 0,
+          "selected_shortage": null,
+          "escalation_expected": false,
+          "escalation_observed": true,
+          "escalation": {
+            "code": "NO_FEASIBLE_ALTERNATIVE",
+            "detail": "No branch remained eligible for refinement. Review the rejected or unresolved proposals."
+          },
+          "calls": 3,
+          "status": "REVIEW_REQUIRED",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Research",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "power_gap",
+          "seconds": 0.14240081000002647,
+          "shortage_expected": 400,
+          "shortage_observed": 400,
+          "gaps_expected": 3,
+          "gaps_detected": 3,
+          "unexpected_gaps": 0,
+          "actual_codes": [
+            "CAPACITY_SHORTAGE",
+            "DEMAND_MISMATCH",
+            "POWER_GAP"
+          ],
+          "proposal_count": 1,
+          "within_resource_limits": 1,
+          "passing_alternatives": 0,
+          "accepted_hard_violations": 0,
+          "selected_shortage": null,
+          "escalation_expected": true,
+          "escalation_observed": true,
+          "escalation": {
+            "code": "NO_FEASIBLE_ALTERNATIVE",
+            "detail": "No branch remained eligible for refinement. Review the rejected or unresolved proposals."
+          },
+          "calls": 4,
+          "status": "REVIEW_REQUIRED",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Research",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "access_gap",
+          "seconds": 0.14141895099987778,
+          "shortage_expected": 400,
+          "shortage_observed": 400,
+          "gaps_expected": 3,
+          "gaps_detected": 3,
+          "unexpected_gaps": 0,
+          "actual_codes": [
+            "ACCESS_GAP",
+            "CAPACITY_SHORTAGE",
+            "DEMAND_MISMATCH"
+          ],
+          "proposal_count": 1,
+          "within_resource_limits": 1,
+          "passing_alternatives": 0,
+          "accepted_hard_violations": 0,
+          "selected_shortage": null,
+          "escalation_expected": true,
+          "escalation_observed": true,
+          "escalation": {
+            "code": "NO_FEASIBLE_ALTERNATIVE",
+            "detail": "No branch remained eligible for refinement. Review the rejected or unresolved proposals."
+          },
+          "calls": 4,
+          "status": "REVIEW_REQUIRED",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "3306423ea34fc5d795b67f321eb9aa2ca014c4204ae3ecea707879e65e8439ca",
+              "role": "Research",
+              "claim": {
+                "statement": "and communities have additional codes and standards related to accessibility, emergency managers and shelter planners should be sure to identify and comply with these requirements as well. 19 If selected as an",
+                "citations": [
+                  {
+                    "page_id": "fnss-s2-t420",
+                    "quote": "and communities have additional codes and standards related to accessibility, emergency managers and shelter planners should be sure to identify and comply with these requirements as well. 19 If selected as an"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "3306423ea34fc5d795b67f321eb9aa2ca014c4204ae3ecea707879e65e8439ca",
+              "role": "Auditor",
+              "claim": {
+                "statement": "and communities have additional codes and standards related to accessibility, emergency managers and shelter planners should be sure to identify and comply with these requirements as well. 19 If selected as an",
+                "citations": [
+                  {
+                    "page_id": "fnss-s2-t420",
+                    "quote": "and communities have additional codes and standards related to accessibility, emergency managers and shelter planners should be sure to identify and comply with these requirements as well. 19 If selected as an"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "3306423ea34fc5d795b67f321eb9aa2ca014c4204ae3ecea707879e65e8439ca",
+              "role": "Auditor",
+              "claim": {
+                "statement": "and communities have additional codes and standards related to accessibility, emergency managers and shelter planners should be sure to identify and comply with these requirements as well. 19 If selected as an",
+                "citations": [
+                  {
+                    "page_id": "fnss-s2-t420",
+                    "quote": "and communities have additional codes and standards related to accessibility, emergency managers and shelter planners should be sure to identify and comply with these requirements as well. 19 If selected as an"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "closed_allocation",
+          "seconds": 0.13662087300008352,
+          "shortage_expected": 400,
+          "shortage_observed": 400,
+          "gaps_expected": 3,
+          "gaps_detected": 3,
+          "unexpected_gaps": 0,
+          "actual_codes": [
+            "CAPACITY_SHORTAGE",
+            "CLOSED_ALLOCATION",
+            "DEMAND_MISMATCH"
+          ],
+          "proposal_count": 1,
+          "within_resource_limits": 1,
+          "passing_alternatives": 1,
+          "accepted_hard_violations": 0,
+          "selected_shortage": 0,
+          "escalation_expected": false,
+          "escalation_observed": false,
+          "escalation": null,
+          "calls": 5,
+          "status": "REVISION_FOR_REVIEW",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Research",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "zero_demand",
+          "seconds": 0.13178227200000947,
+          "shortage_expected": 0,
+          "shortage_observed": 0,
+          "gaps_expected": 0,
+          "gaps_detected": 0,
+          "unexpected_gaps": 0,
+          "actual_codes": [],
+          "proposal_count": 0,
+          "within_resource_limits": 0,
+          "passing_alternatives": 0,
+          "accepted_hard_violations": 0,
+          "selected_shortage": 0,
+          "escalation_expected": false,
+          "escalation_observed": false,
+          "escalation": null,
+          "calls": 2,
+          "status": "CHECKS_PASSED",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Research",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "surplus_assignment",
+          "seconds": 0.12947073000009368,
+          "shortage_expected": 0,
+          "shortage_observed": 0,
+          "gaps_expected": 1,
+          "gaps_detected": 1,
+          "unexpected_gaps": 0,
+          "actual_codes": [
+            "DEMAND_MISMATCH"
+          ],
+          "proposal_count": 1,
+          "within_resource_limits": 1,
+          "passing_alternatives": 1,
+          "accepted_hard_violations": 0,
+          "selected_shortage": 0,
+          "escalation_expected": false,
+          "escalation_observed": false,
+          "escalation": null,
+          "calls": 5,
+          "status": "REVISION_FOR_REVIEW",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Research",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "6923f0368dc36b7fdf5e3556a8b831c519f619e6348db144bc0ffa8670e7e508",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "power_not_required",
+          "seconds": 0.1292549339998459,
+          "shortage_expected": 0,
+          "shortage_observed": 0,
+          "gaps_expected": 0,
+          "gaps_detected": 0,
+          "unexpected_gaps": 0,
+          "actual_codes": [],
+          "proposal_count": 0,
+          "within_resource_limits": 0,
+          "passing_alternatives": 0,
+          "accepted_hard_violations": 0,
+          "selected_shortage": 0,
+          "escalation_expected": false,
+          "escalation_observed": false,
+          "escalation": null,
+          "calls": 2,
+          "status": "CHECKS_PASSED",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "033347f99f3541255788dd0a3dcac83ce7b66d70126919b7e30bc645f9814823",
+              "role": "Research",
+              "claim": {
+                "statement": "15 4.1. Key Considerations In Planning For Shelter Set-Up 4.1.1. Planning in Advance for FNSS The importance of advanced planning in developing and implementing FNSS in general population shelters cannot be overstated.",
+                "citations": [
+                  {
+                    "page_id": "fnss-s1-t0",
+                    "quote": "15 4.1. Key Considerations In Planning For Shelter Set-Up 4.1.1. Planning in Advance for FNSS The importance of advanced planning in developing and implementing FNSS in general population shelters cannot be overstated."
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "033347f99f3541255788dd0a3dcac83ce7b66d70126919b7e30bc645f9814823",
+              "role": "Auditor",
+              "claim": {
+                "statement": "15 4.1. Key Considerations In Planning For Shelter Set-Up 4.1.1. Planning in Advance for FNSS The importance of advanced planning in developing and implementing FNSS in general population shelters cannot be overstated.",
+                "citations": [
+                  {
+                    "page_id": "fnss-s1-t0",
+                    "quote": "15 4.1. Key Considerations In Planning For Shelter Set-Up 4.1.1. Planning in Advance for FNSS The importance of advanced planning in developing and implementing FNSS in general population shelters cannot be overstated."
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "checkpoint_winter_plan",
+          "seconds": 0.13276338499986196,
+          "shortage_expected": 150,
+          "shortage_observed": 150,
+          "gaps_expected": 2,
+          "gaps_detected": 2,
+          "unexpected_gaps": 0,
+          "actual_codes": [
+            "CAPACITY_SHORTAGE",
+            "UNAVAILABLE_OPEN"
+          ],
+          "proposal_count": 1,
+          "within_resource_limits": 1,
+          "passing_alternatives": 0,
+          "accepted_hard_violations": 0,
+          "selected_shortage": null,
+          "escalation_expected": true,
+          "escalation_observed": true,
+          "escalation": {
+            "code": "NO_FEASIBLE_ALTERNATIVE",
+            "detail": "No branch remained eligible for refinement. Review the rejected or unresolved proposals."
+          },
+          "calls": 4,
+          "status": "REVIEW_REQUIRED",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [
+            {
+              "id": "c35f62d2e30e76f379a2fd1986d7ba2cac6ae72b441b9e018ffe4c06bd88c0ef",
+              "role": "Research",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "c35f62d2e30e76f379a2fd1986d7ba2cac6ae72b441b9e018ffe4c06bd88c0ef",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            },
+            {
+              "id": "c35f62d2e30e76f379a2fd1986d7ba2cac6ae72b441b9e018ffe4c06bd88c0ef",
+              "role": "Auditor",
+              "claim": {
+                "statement": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting",
+                "citations": [
+                  {
+                    "page_id": "fnss-s3-t0",
+                    "quote": "21 Operational Tool #12 Legal Authority-DME, CMS, Communication Devices Legal Authority Federal agencies may, on the direction of the President, provide assistance essential to meeting immediate threats to life and property resulting"
+                  }
+                ]
+              },
+              "quote_verified": true,
+              "support_review": true
+            }
+          ],
+          "error": null
+        },
+        {
+          "id": "missing_demand",
+          "seconds": 0.0010544239999035199,
+          "shortage_expected": null,
+          "shortage_observed": null,
+          "gaps_expected": 0,
+          "gaps_detected": 0,
+          "unexpected_gaps": 0,
+          "actual_codes": [],
+          "proposal_count": 0,
+          "within_resource_limits": 0,
+          "passing_alternatives": 0,
+          "accepted_hard_violations": 0,
+          "selected_shortage": null,
+          "escalation_expected": true,
+          "escalation_observed": true,
+          "escalation": {
+            "code": "INPUT_CLARIFICATION",
+            "detail": "Demand must be a nonnegative integer."
+          },
+          "calls": 0,
+          "status": "REVIEW_REQUIRED",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [],
+          "error": null
+        },
+        {
+          "id": "active_emergency",
+          "seconds": 0.0007950920000894257,
+          "shortage_expected": null,
+          "shortage_observed": null,
+          "gaps_expected": 0,
+          "gaps_detected": 0,
+          "unexpected_gaps": 0,
+          "actual_codes": [],
+          "proposal_count": 0,
+          "within_resource_limits": 0,
+          "passing_alternatives": 0,
+          "accepted_hard_violations": 0,
+          "selected_shortage": null,
+          "escalation_expected": true,
+          "escalation_observed": true,
+          "escalation": {
+            "code": "OPERATIONAL_USE",
+            "detail": "EndureAI accepts synthetic planning exercises. Direct actual emergencies to local officials."
+          },
+          "calls": 0,
+          "status": "REVIEW_REQUIRED",
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "claims": [],
+          "error": null
+        }
+      ]
+    }
+  }
+}

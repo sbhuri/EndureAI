@@ -1,0 +1,55 @@
+test_citations_are_real_pages (test_endureai.Tests.test_citations_are_real_pages) ... ok
+test_duplicate_ids (test_endureai.Tests.test_duplicate_ids) ... ok
+test_exhaustive_small_capacity_grid (test_endureai.Tests.test_exhaustive_small_capacity_grid) ... ok
+test_fabricated_capacity_rejected (test_endureai.Tests.test_fabricated_capacity_rejected) ... ok
+test_injection_in_hazard_is_inert (test_endureai.Tests.test_injection_in_hazard_is_inert) ... ok
+test_invalid_inputs (test_endureai.Tests.test_invalid_inputs) ... ok
+test_missing_boolean (test_endureai.Tests.test_missing_boolean) ... ok
+test_missing_evidence (test_endureai.Tests.test_missing_evidence) ... ok
+test_no_mutation (test_endureai.Tests.test_no_mutation) ... ok
+test_retrieval_known_pages (test_endureai.Tests.test_retrieval_known_pages) ... ok
+test_scenarios (test_endureai.Tests.test_scenarios) ... ok
+test_search_bound (test_endureai.Tests.test_search_bound) ... ok
+test_tampered_planner_rejected (test_endureai.Tests.test_tampered_planner_rejected) ... ok
+test_unavailable_not_invented (test_endureai.Tests.test_unavailable_not_invented) ... ok
+test_unknown_query_abstains (test_endureai.Tests.test_unknown_query_abstains) ... ok
+test_bad_perturbation_is_not_an_inventory_write (test_graph.GraphTests.test_bad_perturbation_is_not_an_inventory_write) ... ok
+test_beam_width_depth_and_feedback (test_graph.GraphTests.test_beam_width_depth_and_feedback) ... ok
+test_conflicting_or_insufficient_guidance_stops_planning (test_graph.GraphTests.test_conflicting_or_insufficient_guidance_stops_planning) ... ok
+test_early_revision_uses_prior_auditor_feedback (test_graph.GraphTests.test_early_revision_uses_prior_auditor_feedback) ... ok
+test_global_working_state_is_fresh_for_each_run (test_graph.GraphTests.test_global_working_state_is_fresh_for_each_run) ... ok
+test_graph_uses_sdk_structured_responses_and_records_citation_retry (test_graph.GraphTests.test_graph_uses_sdk_structured_responses_and_records_citation_retry) ... ok
+test_hard_violations_skip_llm_audit_and_cannot_be_accepted (test_graph.GraphTests.test_hard_violations_skip_llm_audit_and_cannot_be_accepted) ... ok
+test_invalid_or_actual_event_input_stops_before_tools (test_graph.GraphTests.test_invalid_or_actual_event_input_stops_before_tools) ... ok
+test_invalid_shelter_does_not_prevent_valid_sibling (test_graph.GraphTests.test_invalid_shelter_does_not_prevent_valid_sibling) ... ok
+test_passing_original_never_calls_planner (test_graph.GraphTests.test_passing_original_never_calls_planner) ... ok
+test_stress_tests_existing_allocations_and_does_not_mutate_input (test_graph.GraphTests.test_stress_tests_existing_allocations_and_does_not_mutate_input) ... ok
+test_credentials_not_in_error_log (test_llm.Tests.test_credentials_not_in_error_log) ... ok
+test_fabricated_citation_blocks_workflow (test_llm.Tests.test_fabricated_citation_blocks_workflow) ... ok
+test_failure_is_recorded_without_fallback (test_llm.Tests.test_failure_is_recorded_without_fallback) ... ok
+test_full_four_agent_flow (test_llm.Tests.test_full_four_agent_flow) ... ok
+test_incomplete_api_response (test_llm.Tests.test_incomplete_api_response) ... ok
+test_llm_approval_cannot_override_constraints (test_llm.Tests.test_llm_approval_cannot_override_constraints) ... ok
+test_negative_assignment (test_llm.Tests.test_negative_assignment) ... ok
+test_no_mutation (test_llm.Tests.test_no_mutation) ... ok
+test_real_sdk_request_with_mock_http_transport (test_llm.Tests.test_real_sdk_request_with_mock_http_transport) ... ok
+test_refusal (test_llm.Tests.test_refusal) ... ok
+test_response_adapter (test_llm.Tests.test_response_adapter) ... ok
+test_revision_loop (test_llm.Tests.test_revision_loop) ... ok
+test_round_bound (test_llm.Tests.test_round_bound) ... ok
+test_strict_schema (test_llm.Tests.test_strict_schema) ... ok
+test_unknown_citation (test_llm.Tests.test_unknown_citation) ... ok
+test_unknown_shelter (test_llm.Tests.test_unknown_shelter) ... ok
+test_denominators_and_live_groundedness_requires_review (test_metrics.MetricsTests.test_denominators_and_live_groundedness_requires_review) ... ok
+test_invalid_input_is_scored_without_a_capacity_denominator (test_metrics.MetricsTests.test_invalid_input_is_scored_without_a_capacity_denominator) ... ok
+test_chunk_lengths_overlap_and_provenance (test_rag.RagTests.test_chunk_lengths_overlap_and_provenance) ... ok
+test_real_chroma_top_five_and_hazard_filter (test_rag.RagTests.test_real_chroma_top_five_and_hazard_filter) ... ok
+test_empty_retry_is_not_accepted (test_research_citations.ResearchCitationTests.test_empty_retry_is_not_accepted) ... ok
+test_mismatched_quote_is_corrected_once (test_research_citations.ResearchCitationTests.test_mismatched_quote_is_corrected_once) ... ok
+test_unverified_retry_is_rejected (test_research_citations.ResearchCitationTests.test_unverified_retry_is_rejected) ... ok
+test_valid_citation_needs_no_retry (test_research_citations.ResearchCitationTests.test_valid_citation_needs_no_retry) ... ok
+
+----------------------------------------------------------------------
+Ran 50 tests in 1.413s
+
+OK

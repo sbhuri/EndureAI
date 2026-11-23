@@ -33,6 +33,26 @@ def validate(s, *, allow_unavailable_open=False):
         if x['open'] and not x['available'] and not allow_unavailable_open: raise ValueError('Open shelter cannot be unavailable')
     return copy.deepcopy(s)
 
+def rank_bm25(passages, tokens, query):
+    """Score tokens using the prototype's BM25 weighting and deterministic ties."""
+    terms = set(_tokenize(query))
+    total = len(passages)
+    average = sum(map(len, tokens)) / max(total, 1)
+    idf = {term: math.log(1 + (total - df + .5) / (df + .5))
+           for term in sorted(terms) if (df := sum(term in group for group in tokens))}
+    rankings = []
+    for page, words in zip(passages, tokens, strict=True):
+        normalizer = 1.2 * (.25 + .75 * len(words) / max(average, 1))
+        score = 0.0
+        for term, weight in idf.items():
+            frequency = words.count(term)
+            if frequency:
+                score += weight * frequency * 2.2 / (frequency + normalizer)
+        if score > 0:
+            rankings.append((round(score, 5), page))
+    return sorted(rankings, key=lambda item: (-item[0], item[1]["page"], item[1]["id"]))
+
+
 class ResearchAgent:
     """BM25 retrieval over immutable page-labelled FEMA text; extractive generation."""
     def __init__(self, corpus=None):
@@ -42,19 +62,9 @@ class ResearchAgent:
         self.pages=self.data['pages']
         self.tokens=[_tokenize(p['text']) for p in self.pages]
     def retrieve(self, query, k=3):
-        q=set(_tokenize(query)); n=len(self.pages)
-        avg=sum(map(len,self.tokens))/max(n,1); scored=[]
-        for p,tokens in zip(self.pages,self.tokens):
-            score=0.0
-            for term in q:
-                tf=tokens.count(term)
-                if not tf: continue
-                df=sum(term in t for t in self.tokens)
-                score+=math.log(1+(n-df+.5)/(df+.5))*tf*2.2/(tf+1.2*(.25+.75*len(tokens)/max(avg,1)))
-            if score>0:
-                scored.append({**p,'score':round(score,5),'url':self.data['retrieved_url']+f"#page={p['page']}",
-                               'summary':summarize_text(p['text'],query,2)})
-        return sorted(scored,key=lambda p:(-p['score'],p['page']))[:k]
+        ranked = rank_bm25(self.pages, self.tokens, query)[:k]
+        return [{**page, "score": score, "url": self.data["retrieved_url"] + f"#page={page['page']}",
+                 "summary": summarize_text(page["text"], query, 2)} for score, page in ranked]
     def run(self):
         return {topic:self.retrieve(query) for topic,query in QUERIES.items()}
 
