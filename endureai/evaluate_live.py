@@ -6,13 +6,13 @@ from .core import ROOT
 from .llm import CoordinatorAgent,OpenAIBackend,render_report
 
 def main():
-    p=argparse.ArgumentParser(description='Paid live evaluation, up to 11 model calls per scenario')
+    p=argparse.ArgumentParser(description='Paid live evaluation, up to 12 model calls per scenario')
     p.add_argument('--model');p.add_argument('--limit',type=int,default=1)
     p.add_argument('--output',type=Path,default=ROOT/'runs'/datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S%fZ'))
     a=p.parse_args()
     if not 1<=a.limit<=10:p.error('limit must be 1–10')
     cases=json.loads((ROOT/'data/evaluation_cases.json').read_text())[:a.limit]
-    try:backend=OpenAIBackend(a.model,max_calls=a.limit*11)
+    try:backend=OpenAIBackend(a.model,max_calls=a.limit*12)
     except ValueError as e:p.error(str(e))
     a.output.mkdir(parents=True,exist_ok=False);rows=[]
     for c in cases:
