@@ -1,1 +1,5 @@
 openai==2.38.0
+chromadb==1.5.9
+langgraph==1.2.24
+tiktoken==0.14.0
+socksio==1.0.0
